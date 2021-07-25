@@ -17,11 +17,10 @@ const saveData = async (req,res)=>{
 
                 let newARr =new dotaModel({
                     localized_name,
-                    attack_type,
-                    img
+                    attack_type
                 })
                 newARr.save();
-                res.send("item ADDED")
+                res.send(newARr)
             }
         })
 }
@@ -52,10 +51,7 @@ const localized_name=req.params.localized_name
 
 
 const updateHero =async (req,res) =>{
-    const{ 
-        attack_type,
-        img,
-    }=req.body;
+    const{attack_type}=req.body;
     const localized_name=req.params.localized_name;
    
     dotaModel.find({localized_name:localized_name}, (error,data)=>{
@@ -65,7 +61,6 @@ const updateHero =async (req,res) =>{
         }else{
 
             data[0].attack_type= attack_type;
-            data[0].img=img;
             data[0].save();
             res.send(data)
         }

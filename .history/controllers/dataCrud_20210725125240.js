@@ -21,7 +21,7 @@ const saveData = async (req,res)=>{
                     img
                 })
                 newARr.save();
-                res.send("item ADDED")
+                res.send(newARr)
             }
         })
 }
